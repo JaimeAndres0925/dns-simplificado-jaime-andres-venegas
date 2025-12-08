@@ -22,7 +22,7 @@ public class Servidor {
                      PrintWriter out = new PrintWriter(socket.getOutputStream(), true)) {
 
                     System.out.println("Cliente conectado: ");
-                    out.println("220 Servidor LOOKUP. Comandos: LOOKUP <tipo> <dominio> | EXIT");
+                    out.println("220 Servidor LOOKUP. Comandos: LOOKUP <tipo> <dominio> | EXIT | LIST ");
 
                     String raw;
                     while ((raw = in.readLine()) != null) {
