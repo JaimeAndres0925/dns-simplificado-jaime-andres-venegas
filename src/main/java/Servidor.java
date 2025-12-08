@@ -33,7 +33,17 @@ public class Servidor {
                             if (linea.equalsIgnoreCase("EXIT")) {
                                 out.println("221 Bye!");
                                 break;
-                            } else if (linea.toUpperCase().startsWith("LOOKUP")) {
+                            }
+                                 else if (linea.equalsIgnoreCase("LIST")) {
+                                    out.println("150 Inicio listado");
+                                    for (Map.Entry<String, List<Registro>> entry : diccionario.entrySet()) {
+                                        String dominio = entry.getKey();
+                                        for (Registro r : entry.getValue()) {
+                                            out.println(dominio + " " + r.getTipo() + " " + r.getValor());
+                                        }
+                                    }
+                                    out.println("226 Fin listado");
+                                } else if (linea.toUpperCase().startsWith("LOOKUP")) {
                                 String[] partes = linea.split("\\s+");
                                 if (partes.length == 3) {
                                     String tipo = partes[1];
